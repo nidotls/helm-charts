@@ -24,6 +24,16 @@ entries:
   ntfy:
   - apiVersion: v2
     appVersion: v2.7.0
+    created: "2023-10-20T17:27:47.843973415Z"
+    description: A Helm chart for Kubernetes
+    digest: c1d81a09f390e34a5e30eac90c762892b2a6468326a41c9f6e59cf12db77a07a
+    name: ntfy
+    type: application
+    urls:
+    - https://github.com/nidotls/helm-charts/releases/download/ntfy-0.1.1/ntfy-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v2.7.0
     created: "2023-10-20T16:59:29.017175132Z"
     description: A Helm chart for Kubernetes
     digest: 1a6042820b305068f95ffa60d0e97657175f34bc404acb3da275c11b274f36b0
@@ -32,4 +42,4 @@ entries:
     urls:
     - https://github.com/nidotls/helm-charts/releases/download/ntfy-0.1.0/ntfy-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-20T16:59:29.017202634Z"
+generated: "2023-10-20T17:27:47.843983215Z"
