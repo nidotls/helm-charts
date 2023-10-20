@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "homebridge.fullname" . }}
+  name: {{ include "ntfy.fullname" . }}
   labels:
-    {{- include "homebridge.labels" . | nindent 4 }}
+    {{- include "ntfy.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "homebridge.selectorLabels" . | nindent 6 }}
+      {{- include "ntfy.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,14 +16,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "homebridge.selectorLabels" . | nindent 8 }}
+        {{- include "ntfy.selectorLabels" . | nindent 8 }}
     spec:
-      hostNetwork: {{ .Values.hostNetwork }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "homebridge.serviceAccountName" . }}
+      serviceAccountName: {{ include "ntfy.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -32,9 +31,10 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: ["serve", "--cache-file", "/var/cache/ntfy/cache.db"]
           ports:
             - name: http
-              containerPort: 8581
+              containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -45,11 +45,11 @@ spec:
               path: /
               port: http
           volumeMounts:
-            - name: data
-              mountPath: {{ .Values.persistence.mountPath }}
-              {{- if .Values.persistence.subPath }}
-              subPath: {{ .Values.persistence.subPath }}
-              {{- end }}
+            - name: config
+              mountPath: "/etc/ntfy"
+              readOnly: true
+            - name: cache
+              mountPath: /var/cache/ntfy
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -65,10 +65,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        - name: data
+        - name: config
+          configMap:
+            name: ntfy
+        - name: cache
         {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.existingClaim | default (include "homebridge.fullname" .) }}
+            claimName: {{ .Values.persistence.existingClaim | default (include "ntfy.fullname" .) }}
         {{- else }}
           emptyDir: {}
         {{- end -}}
