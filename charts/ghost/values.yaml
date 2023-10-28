@@ -22,6 +22,8 @@ env:
   database__connection__database: ""
   database__connection__user: ""
   database__connection__password: ""
+  mail__transport: "Direct"
+  logging__transports: "[\"stdout\"]"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -64,6 +66,22 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+persistence:
+  enabled: true
+  ## @param persistence.storageClass Storage class of backing PVC
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  storageClass: ""
+  annotations: {}
+  accessModes:
+    - ReadWriteOnce
+  size: 8Gi
+  existingClaim: ""
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

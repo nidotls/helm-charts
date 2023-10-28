@@ -45,6 +45,9 @@ spec:
             httpGet:
               path: /
               port: http
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/ghost/content
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -59,3 +62,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: data
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "ghost.fullname" .) }}
+        {{- else }}
+          emptyDir: {}
+        {{- end -}}
