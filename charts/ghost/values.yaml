@@ -15,15 +15,24 @@ nameOverride: ""
 fullnameOverride: ""
 
 env:
-  NODE_ENV: "production"
-  url: "http://localhost"
-  database__client: "mysql"
-  database__connection__host: ""
-  database__connection__database: ""
-  database__connection__user: ""
-  database__connection__password: ""
-  mail__transport: "Direct"
-  logging__transports: "[\"stdout\"]"
+  - name: NODE_ENV
+    value: "production"
+  - name: url
+    value: "http://localhost"
+  - name: database__client
+    value: "mysql"
+  - name: database__connection__host
+    value: ""
+  - name: database__connection__database
+    value: ""
+  - name: database__connection__user
+    value: ""
+  - name: database__connection__password
+    value: ""
+  - name: mail__transport
+    value: "Direct"
+  - name: logging__transports
+    value: "[\"stdout\"]"
 
 serviceAccount:
   # Specifies whether a service account should be created
