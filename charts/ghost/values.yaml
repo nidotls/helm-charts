@@ -14,11 +14,11 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+url: "http://localhost"
+
 env:
   - name: NODE_ENV
     value: "production"
-  - name: url
-    value: "http://localhost"
   - name: database__client
     value: "mysql"
   - name: database__connection__host
