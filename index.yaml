@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/nidotls/helm-charts/releases/download/cors-container-0.1.0/cors-container-0.1.0.tgz
     version: 0.1.0
+  ghost:
+  - apiVersion: v2
+    appVersion: 5.71.0
+    created: "2023-10-28T14:24:52.929348435Z"
+    description: A Helm chart for Kubernetes
+    digest: ff6c6edceeac6bb9c1784ca5358961667ef2648c72939f26aee6795f4a77b342
+    name: ghost
+    type: application
+    urls:
+    - https://github.com/nidotls/helm-charts/releases/download/ghost-0.1.0/ghost-0.1.0.tgz
+    version: 0.1.0
   homebridge:
   - apiVersion: v2
     appVersion: latest
@@ -53,4 +64,4 @@ entries:
     urls:
     - https://github.com/nidotls/helm-charts/releases/download/ntfy-0.1.0/ntfy-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-20T19:46:24.98373148Z"
+generated: "2023-10-28T14:24:52.929361035Z"
