@@ -14,6 +14,16 @@ entries:
   ghost:
   - apiVersion: v2
     appVersion: 5.71.0
+    created: "2023-10-28T15:16:21.569633874Z"
+    description: A Helm chart for Kubernetes
+    digest: f73d2b492b4d5c10e6f5e4ce1f3b4df699855b638344e2098e554c1fbaf0b04a
+    name: ghost
+    type: application
+    urls:
+    - https://github.com/nidotls/helm-charts/releases/download/ghost-0.1.2/ghost-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 5.71.0
     created: "2023-10-28T14:38:25.295089162Z"
     description: A Helm chart for Kubernetes
     digest: 1db0b61c796230d18e81de2fc6c0c2e4a9dc3aa9de233066c8c54c3b10aa740d
@@ -74,4 +84,4 @@ entries:
     urls:
     - https://github.com/nidotls/helm-charts/releases/download/ntfy-0.1.0/ntfy-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-28T14:38:25.295100762Z"
+generated: "2023-10-28T15:16:21.569667476Z"
