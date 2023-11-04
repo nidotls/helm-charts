@@ -114,4 +114,15 @@ entries:
     urls:
     - https://github.com/nidotls/helm-charts/releases/download/ntfy-0.1.0/ntfy-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-28T16:12:34.868187547Z"
+  xbackbone:
+  - apiVersion: v2
+    appVersion: 3.6.3
+    created: "2023-11-04T18:55:58.902739737Z"
+    description: A Helm chart for Kubernetes
+    digest: 9292507bdfd96a69b43511dbfdae71a23e712dcf43bc6bacbaf024a35346989c
+    name: xbackbone
+    type: application
+    urls:
+    - https://github.com/nidotls/helm-charts/releases/download/xbackbone-0.1.0/xbackbone-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-11-04T18:55:58.902759537Z"
